@@ -14,9 +14,15 @@ namespace QuizMester_Danial
 {
     public partial class Form1 : Form
     {
+        bool started = false;
+        private string loggedInUsername;
+
         public Form1()
         {
             InitializeComponent();
+            tcQuiz.Appearance = TabAppearance.Normal;
+            tcQuiz.ItemSize = new Size(0, 1);
+            tcQuiz.SizeMode = TabSizeMode.Fixed;
         }
 
         private void btnStartLogin_Click(object sender, EventArgs e)
@@ -44,7 +50,16 @@ namespace QuizMester_Danial
                 bool isRegistered = RegisterUser(username, password);
                 if (isRegistered)
                 {
-                    MessageBox.Show("User registered successfully!");
+                    loggedInUsername = username;  // Store the logged-in username
+                    lblUsername.Text = $"Logged in as: {loggedInUsername}";  // Update the label with the username
+
+                    DialogResult result = MessageBox.Show("User registered successfully!", "Registered", MessageBoxButtons.OK);
+
+                    if (result == DialogResult.OK)
+                    {
+                        // Code to execute when OK is clicked
+                        tcQuiz.SelectedIndex = 3;
+                    }
                 }
                 else
                 {
@@ -56,7 +71,6 @@ namespace QuizMester_Danial
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}");
             }
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -73,12 +87,20 @@ namespace QuizMester_Danial
                 bool isLoggedIn = LoginUser(username, password);
                 if (isLoggedIn)
                 {
-                    MessageBox.Show("Login successful!");
-                    // Proceed to the next form or main application logic
+                    loggedInUsername = username;  // Store the logged-in username
+                    lblUsername.Text = $"Logged in as: {loggedInUsername}";  // Update the label with the username
+
+                    DialogResult result = MessageBox.Show("Login succesful!", "Logged in", MessageBoxButtons.OK);
+
+                    if (result == DialogResult.OK)
+                    {
+                        // Code to execute when OK is clicked
+                        tcQuiz.SelectedIndex = 3;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Login failed. Check your username and password lol.");
+                    MessageBox.Show("Login failed. Check your username and password.");
                 }
             }
             catch (Exception ex)
@@ -203,6 +225,116 @@ namespace QuizMester_Danial
             }
         }
 
+        private void BtnStart_MouseEnter(object sender, EventArgs e)
+        {
+            // Cast the sender to a Button so you can access its properties
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                btn.BackColor = Color.White; // Change this to any color you prefer
 
+                lbSelector.Text = btn.Text;
+
+
+            }
+        }
+
+        private void BtnStart_MouseLeave(object sender, EventArgs e)
+        {
+            // Cast the sender to a Button so you can access its properties
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                btn.BackColor = Color.Silver; // Change this to the original color
+
+                lbSelector.Text = "Ready?";
+
+            }
+        }
+
+
+
+        public void Logout()
+        {
+            // Clear any user-related data if necessary
+            txbLoginUsername.Text = string.Empty;
+            txbLoginPassword.Text = string.Empty;
+
+            // Redirect to the login tab (assuming login is at tab index 1)
+            tcQuiz.SelectedIndex = 1;  // Redirects to the login tab control
+
+            MessageBox.Show("You have been logged out.");
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            if (started)
+            {
+
+            }
+            else
+            {
+                //started = true;
+            }
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            if (started)
+            {
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    UseWaitCursor = true;
+                    Form2 newform = new Form2();
+                    newform.ShowDialog();
+                }
+            }
+        }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            if (started)
+            {
+
+            }
+            else
+            {
+                tcQuiz.SelectedIndex = 4;
+            }
+        }
+
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            if (started)
+            {
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Do you want to continue?", "Confirmation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    Logout();
+                }
+            }
+        }
+
+        private void Back(object sender, EventArgs e)
+        {
+            tcQuiz.SelectedIndex = 0;
+        }
+
+        private void btnBack3_Click(object sender, EventArgs e)
+        {
+            tcQuiz.SelectedIndex = 3;
+
+        }
     }
 }

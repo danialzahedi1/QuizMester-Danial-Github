@@ -34,7 +34,9 @@
             this.btnStartRegister = new System.Windows.Forms.Button();
             this.tcQuiz = new System.Windows.Forms.TabControl();
             this.tpStart = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.tpLogin = new System.Windows.Forms.TabPage();
+            this.tbnBack1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txbLoginPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,36 +44,52 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.tpRegister = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnBack2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.txbRegisterPassword = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.txbRegisterUsername = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.tpQuiz = new System.Windows.Forms.TabPage();
             this.tpLeaderboard = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.rtbLeaderboard = new System.Windows.Forms.RichTextBox();
+            this.btnBack3 = new System.Windows.Forms.Button();
+            this.tpQuiz = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.lbSelector = new System.Windows.Forms.Label();
+            this.lblQuestion = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.tcQuiz.SuspendLayout();
             this.tpStart.SuspendLayout();
             this.tpLogin.SuspendLayout();
             this.tpRegister.SuspendLayout();
+            this.tpLeaderboard.SuspendLayout();
+            this.tpQuiz.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(182, 19);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(191, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(456, 91);
             this.label1.TabIndex = 0;
             this.label1.Text = "QuizMester";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnStartLogin
             // 
-            this.btnStartLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartLogin.Location = new System.Drawing.Point(287, 177);
+            this.btnStartLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartLogin.Location = new System.Drawing.Point(287, 316);
             this.btnStartLogin.Name = "btnStartLogin";
-            this.btnStartLogin.Size = new System.Drawing.Size(238, 72);
+            this.btnStartLogin.Size = new System.Drawing.Size(270, 89);
             this.btnStartLogin.TabIndex = 1;
             this.btnStartLogin.Text = "Log in";
             this.btnStartLogin.UseVisualStyleBackColor = true;
@@ -79,10 +97,10 @@
             // 
             // btnStartRegister
             // 
-            this.btnStartRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartRegister.Location = new System.Drawing.Point(287, 287);
+            this.btnStartRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartRegister.Location = new System.Drawing.Point(287, 432);
             this.btnStartRegister.Name = "btnStartRegister";
-            this.btnStartRegister.Size = new System.Drawing.Size(238, 72);
+            this.btnStartRegister.Size = new System.Drawing.Size(270, 94);
             this.btnStartRegister.TabIndex = 2;
             this.btnStartRegister.Text = "Register";
             this.btnStartRegister.UseVisualStyleBackColor = true;
@@ -103,6 +121,8 @@
             // 
             // tpStart
             // 
+            this.tpStart.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpStart.Controls.Add(this.label9);
             this.tpStart.Controls.Add(this.label1);
             this.tpStart.Controls.Add(this.btnStartRegister);
             this.tpStart.Controls.Add(this.btnStartLogin);
@@ -114,14 +134,29 @@
             this.tpStart.Text = "Start";
             this.tpStart.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(279, 165);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(278, 46);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Danial Zahedi";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tpLogin
             // 
+            this.tpLogin.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpLogin.Controls.Add(this.tbnBack1);
             this.tpLogin.Controls.Add(this.label5);
             this.tpLogin.Controls.Add(this.txbLoginPassword);
             this.tpLogin.Controls.Add(this.label4);
             this.tpLogin.Controls.Add(this.txbLoginUsername);
             this.tpLogin.Controls.Add(this.label2);
             this.tpLogin.Controls.Add(this.btnLogin);
+            this.tpLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpLogin.Location = new System.Drawing.Point(4, 25);
             this.tpLogin.Name = "tpLogin";
             this.tpLogin.Padding = new System.Windows.Forms.Padding(3);
@@ -130,11 +165,25 @@
             this.tpLogin.Text = "Login";
             this.tpLogin.UseVisualStyleBackColor = true;
             // 
+            // tbnBack1
+            // 
+            this.tbnBack1.BackColor = System.Drawing.Color.White;
+            this.tbnBack1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbnBack1.ForeColor = System.Drawing.Color.Black;
+            this.tbnBack1.Location = new System.Drawing.Point(297, 489);
+            this.tbnBack1.Name = "tbnBack1";
+            this.tbnBack1.Size = new System.Drawing.Size(238, 72);
+            this.tbnBack1.TabIndex = 20;
+            this.tbnBack1.Text = "Back";
+            this.tbnBack1.UseVisualStyleBackColor = false;
+            this.tbnBack1.Click += new System.EventHandler(this.Back);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(339, 297);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(208, 273);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 32);
             this.label5.TabIndex = 8;
@@ -142,16 +191,21 @@
             // 
             // txbLoginPassword
             // 
-            this.txbLoginPassword.Location = new System.Drawing.Point(296, 342);
+            this.txbLoginPassword.BackColor = System.Drawing.Color.Gray;
+            this.txbLoginPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbLoginPassword.ForeColor = System.Drawing.Color.White;
+            this.txbLoginPassword.Location = new System.Drawing.Point(214, 308);
             this.txbLoginPassword.Name = "txbLoginPassword";
-            this.txbLoginPassword.Size = new System.Drawing.Size(217, 22);
+            this.txbLoginPassword.PasswordChar = '*';
+            this.txbLoginPassword.Size = new System.Drawing.Size(415, 56);
             this.txbLoginPassword.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(339, 206);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(208, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 32);
             this.label4.TabIndex = 6;
@@ -159,16 +213,20 @@
             // 
             // txbLoginUsername
             // 
-            this.txbLoginUsername.Location = new System.Drawing.Point(296, 251);
+            this.txbLoginUsername.BackColor = System.Drawing.Color.Gray;
+            this.txbLoginUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbLoginUsername.ForeColor = System.Drawing.Color.White;
+            this.txbLoginUsername.Location = new System.Drawing.Point(214, 202);
             this.txbLoginUsername.Name = "txbLoginUsername";
-            this.txbLoginUsername.Size = new System.Drawing.Size(217, 22);
+            this.txbLoginUsername.Size = new System.Drawing.Size(415, 56);
             this.txbLoginUsername.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(280, 54);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(275, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(259, 91);
             this.label2.TabIndex = 2;
@@ -176,20 +234,24 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.Color.White;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(287, 423);
+            this.btnLogin.ForeColor = System.Drawing.Color.Black;
+            this.btnLogin.Location = new System.Drawing.Point(297, 411);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(238, 72);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Log in";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // tpRegister
             // 
-            this.tpRegister.Controls.Add(this.label6);
+            this.tpRegister.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpRegister.Controls.Add(this.btnBack2);
+            this.tpRegister.Controls.Add(this.label3);
             this.tpRegister.Controls.Add(this.txbRegisterPassword);
-            this.tpRegister.Controls.Add(this.label7);
+            this.tpRegister.Controls.Add(this.label10);
             this.tpRegister.Controls.Add(this.txbRegisterUsername);
             this.tpRegister.Controls.Add(this.label8);
             this.tpRegister.Controls.Add(this.btnRegister);
@@ -201,45 +263,68 @@
             this.tpRegister.Text = "Register";
             this.tpRegister.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // btnBack2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(355, 323);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 32);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Password";
+            this.btnBack2.BackColor = System.Drawing.Color.White;
+            this.btnBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack2.ForeColor = System.Drawing.Color.Black;
+            this.btnBack2.Location = new System.Drawing.Point(297, 489);
+            this.btnBack2.Name = "btnBack2";
+            this.btnBack2.Size = new System.Drawing.Size(238, 72);
+            this.btnBack2.TabIndex = 19;
+            this.btnBack2.Text = "Back";
+            this.btnBack2.UseVisualStyleBackColor = false;
+            this.btnBack2.Click += new System.EventHandler(this.Back);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(208, 273);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(138, 32);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Password";
             // 
             // txbRegisterPassword
             // 
-            this.txbRegisterPassword.Location = new System.Drawing.Point(312, 368);
+            this.txbRegisterPassword.BackColor = System.Drawing.Color.Gray;
+            this.txbRegisterPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbRegisterPassword.ForeColor = System.Drawing.Color.White;
+            this.txbRegisterPassword.Location = new System.Drawing.Point(214, 308);
             this.txbRegisterPassword.Name = "txbRegisterPassword";
-            this.txbRegisterPassword.Size = new System.Drawing.Size(217, 22);
-            this.txbRegisterPassword.TabIndex = 13;
+            this.txbRegisterPassword.PasswordChar = '*';
+            this.txbRegisterPassword.Size = new System.Drawing.Size(415, 56);
+            this.txbRegisterPassword.TabIndex = 17;
             // 
-            // label7
+            // label10
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(355, 232);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(144, 32);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Username";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(208, 167);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(144, 32);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Username";
             // 
             // txbRegisterUsername
             // 
-            this.txbRegisterUsername.Location = new System.Drawing.Point(312, 277);
+            this.txbRegisterUsername.BackColor = System.Drawing.Color.Gray;
+            this.txbRegisterUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbRegisterUsername.ForeColor = System.Drawing.Color.White;
+            this.txbRegisterUsername.Location = new System.Drawing.Point(214, 202);
             this.txbRegisterUsername.Name = "txbRegisterUsername";
-            this.txbRegisterUsername.Size = new System.Drawing.Size(217, 22);
-            this.txbRegisterUsername.TabIndex = 11;
+            this.txbRegisterUsername.Size = new System.Drawing.Size(415, 56);
+            this.txbRegisterUsername.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(256, 68);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(250, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(343, 91);
             this.label8.TabIndex = 9;
@@ -247,17 +332,78 @@
             // 
             // btnRegister
             // 
+            this.btnRegister.BackColor = System.Drawing.Color.White;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(303, 449);
+            this.btnRegister.ForeColor = System.Drawing.Color.Black;
+            this.btnRegister.Location = new System.Drawing.Point(297, 411);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(238, 72);
             this.btnRegister.TabIndex = 10;
             this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // tpLeaderboard
+            // 
+            this.tpLeaderboard.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpLeaderboard.Controls.Add(this.btnBack3);
+            this.tpLeaderboard.Controls.Add(this.rtbLeaderboard);
+            this.tpLeaderboard.Controls.Add(this.label6);
+            this.tpLeaderboard.Location = new System.Drawing.Point(4, 25);
+            this.tpLeaderboard.Name = "tpLeaderboard";
+            this.tpLeaderboard.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLeaderboard.Size = new System.Drawing.Size(850, 600);
+            this.tpLeaderboard.TabIndex = 4;
+            this.tpLeaderboard.Text = "Leaderboard";
+            this.tpLeaderboard.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(58, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(726, 134);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "LeaderBoard";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rtbLeaderboard
+            // 
+            this.rtbLeaderboard.BackColor = System.Drawing.Color.Gray;
+            this.rtbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbLeaderboard.ForeColor = System.Drawing.Color.White;
+            this.rtbLeaderboard.Location = new System.Drawing.Point(143, 152);
+            this.rtbLeaderboard.Name = "rtbLeaderboard";
+            this.rtbLeaderboard.Size = new System.Drawing.Size(547, 323);
+            this.rtbLeaderboard.TabIndex = 13;
+            this.rtbLeaderboard.Text = resources.GetString("rtbLeaderboard.Text");
+            // 
+            // btnBack3
+            // 
+            this.btnBack3.BackColor = System.Drawing.Color.White;
+            this.btnBack3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack3.ForeColor = System.Drawing.Color.Black;
+            this.btnBack3.Location = new System.Drawing.Point(292, 495);
+            this.btnBack3.Name = "btnBack3";
+            this.btnBack3.Size = new System.Drawing.Size(238, 72);
+            this.btnBack3.TabIndex = 20;
+            this.btnBack3.Text = "Back";
+            this.btnBack3.UseVisualStyleBackColor = false;
+            this.btnBack3.Click += new System.EventHandler(this.btnBack3_Click);
             // 
             // tpQuiz
             // 
+            this.tpQuiz.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpQuiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpQuiz.Controls.Add(this.richTextBox1);
+            this.tpQuiz.Controls.Add(this.btn1);
+            this.tpQuiz.Controls.Add(this.btn3);
+            this.tpQuiz.Controls.Add(this.btn4);
+            this.tpQuiz.Controls.Add(this.btn2);
+            this.tpQuiz.Controls.Add(this.lbSelector);
+            this.tpQuiz.Controls.Add(this.lblQuestion);
+            this.tpQuiz.Controls.Add(this.lblUsername);
             this.tpQuiz.Location = new System.Drawing.Point(4, 25);
             this.tpQuiz.Name = "tpQuiz";
             this.tpQuiz.Padding = new System.Windows.Forms.Padding(3);
@@ -266,15 +412,130 @@
             this.tpQuiz.Text = "Quiz";
             this.tpQuiz.UseVisualStyleBackColor = true;
             // 
-            // tpLeaderboard
+            // richTextBox1
             // 
-            this.tpLeaderboard.Location = new System.Drawing.Point(4, 25);
-            this.tpLeaderboard.Name = "tpLeaderboard";
-            this.tpLeaderboard.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLeaderboard.Size = new System.Drawing.Size(850, 600);
-            this.tpLeaderboard.TabIndex = 4;
-            this.tpLeaderboard.Text = "Leaderboard";
-            this.tpLeaderboard.UseVisualStyleBackColor = true;
+            this.richTextBox1.Location = new System.Drawing.Point(146, 204);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(8, 8);
+            this.richTextBox1.TabIndex = 17;
+            this.richTextBox1.Text = "";
+            // 
+            // btn1
+            // 
+            this.btn1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn1.BackColor = System.Drawing.Color.Silver;
+            this.btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn1.FlatAppearance.BorderSize = 10;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn1.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.ForeColor = System.Drawing.Color.Black;
+            this.btn1.Location = new System.Drawing.Point(63, 323);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(360, 100);
+            this.btn1.TabIndex = 16;
+            this.btn1.Text = "Yes";
+            this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn1.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn1.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn3
+            // 
+            this.btn3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn3.BackColor = System.Drawing.Color.Silver;
+            this.btn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn3.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn3.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn3.FlatAppearance.BorderSize = 10;
+            this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn3.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.ForeColor = System.Drawing.Color.Black;
+            this.btn3.Location = new System.Drawing.Point(63, 429);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(360, 100);
+            this.btn3.TabIndex = 15;
+            this.btn3.Text = "Leaderboard";
+            this.btn3.UseVisualStyleBackColor = false;
+            this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            this.btn3.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn3.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn4
+            // 
+            this.btn4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn4.BackColor = System.Drawing.Color.Silver;
+            this.btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn4.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn4.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn4.FlatAppearance.BorderSize = 10;
+            this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn4.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.ForeColor = System.Drawing.Color.Black;
+            this.btn4.Location = new System.Drawing.Point(429, 429);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(360, 100);
+            this.btn4.TabIndex = 14;
+            this.btn4.Text = "Logout";
+            this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn4.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn4.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn2
+            // 
+            this.btn2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn2.BackColor = System.Drawing.Color.Silver;
+            this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn2.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn2.FlatAppearance.BorderSize = 10;
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn2.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.ForeColor = System.Drawing.Color.Black;
+            this.btn2.Location = new System.Drawing.Point(429, 323);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(360, 100);
+            this.btn2.TabIndex = 13;
+            this.btn2.Text = "No";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            this.btn2.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn2.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // lbSelector
+            // 
+            this.lbSelector.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSelector.ForeColor = System.Drawing.Color.White;
+            this.lbSelector.Location = new System.Drawing.Point(63, 194);
+            this.lbSelector.Name = "lbSelector";
+            this.lbSelector.Size = new System.Drawing.Size(726, 95);
+            this.lbSelector.TabIndex = 11;
+            this.lbSelector.Text = "Ready?";
+            this.lbSelector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblQuestion
+            // 
+            this.lblQuestion.AutoSize = true;
+            this.lblQuestion.Font = new System.Drawing.Font("Gadugi", 55.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestion.ForeColor = System.Drawing.Color.White;
+            this.lblQuestion.Location = new System.Drawing.Point(127, 43);
+            this.lblQuestion.Name = "lblQuestion";
+            this.lblQuestion.Size = new System.Drawing.Size(574, 111);
+            this.lblQuestion.TabIndex = 10;
+            this.lblQuestion.Text = "Quizmester!";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(3, 3);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(205, 22);
+            this.lblUsername.TabIndex = 0;
+            this.lblUsername.Text = "Logged in as: Username";
             // 
             // Form1
             // 
@@ -292,6 +553,9 @@
             this.tpLogin.PerformLayout();
             this.tpRegister.ResumeLayout(false);
             this.tpRegister.PerformLayout();
+            this.tpLeaderboard.ResumeLayout(false);
+            this.tpQuiz.ResumeLayout(false);
+            this.tpQuiz.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,12 +577,26 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbLoginPassword;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txbRegisterPassword;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txbRegisterUsername;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbSelector;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.Button btn4;
+        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label lblQuestion;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txbRegisterPassword;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txbRegisterUsername;
+        private System.Windows.Forms.Button tbnBack1;
+        private System.Windows.Forms.Button btnBack2;
+        private System.Windows.Forms.RichTextBox rtbLeaderboard;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnBack3;
     }
 }
 
