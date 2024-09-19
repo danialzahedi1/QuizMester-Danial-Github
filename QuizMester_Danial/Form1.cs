@@ -9,13 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using static QuizMester_Danial.QuestionManager;
 
 namespace QuizMester_Danial
 {
     public partial class Form1 : Form
     {
-        bool started = false;
         private string loggedInUsername;
+
+        bool started = false;
+        bool choose = false;
+
+        private QuestionManager questionManager = new QuestionManager();
+        private Question currentQuestion;
+
+        private int totalPoints = 100;
+        private double timeLeft = 10; // in seconds
+        private Timer timerQuestionTime;
+
 
         public Form1()
         {
@@ -23,6 +34,42 @@ namespace QuizMester_Danial
             tcQuiz.Appearance = TabAppearance.Normal;
             tcQuiz.ItemSize = new Size(0, 1);
             tcQuiz.SizeMode = TabSizeMode.Fixed;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            timerQuestionTime = new Timer();
+            timerQuestionTime.Interval = 100; // 100 miliseconds
+            timerQuestionTime.Tick += TimerQuestionTime_Tick;
+
+        }
+
+        private void TimerQuestionTime_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft -= timerQuestionTime.Interval / 1000.0; // Calculate elapsed time
+                totalPoints = CalculateGradualPoints(100, 10 - timeLeft); // Update points
+
+                pgbTimeLeft.Value = (int)((timeLeft / 10.0) * 100); // Update ProgressBar
+
+                if (timeLeft <= 0)
+                {
+                    // Time's up, show next question
+                    timerQuestionTime.Stop();
+                    MessageBox.Show("Time's up!");
+                    ShowNextQuestion();
+                }
+            }
+        }
+
+        private int CalculateGradualPoints(int maxPoints, double elapsedSeconds)
+        {
+            double maxDeduction = maxPoints;
+            double deduction = Math.Max(0, maxDeduction - (elapsedSeconds / 10.0) * maxDeduction);
+
+            return (int)Math.Round(deduction);
         }
 
         private void btnStartLogin_Click(object sender, EventArgs e)
@@ -195,36 +242,6 @@ namespace QuizMester_Danial
             }
         }
 
-        public bool SaveHighScore(string playerName, int newHighScore)
-        {
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
-            string query = @"
-                INSERT INTO login (playerName, playerHighscore)
-                VALUES (@PlayerName, @NewHighScore)
-                ON DUPLICATE KEY UPDATE playerHighscore = GREATEST(playerHighscore, @NewHighScore);";
-
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@PlayerName", playerName);
-                        cmd.Parameters.AddWithValue("@NewHighScore", newHighScore);
-
-                        int result = cmd.ExecuteNonQuery();
-                        return result > 0; // Return true if the insert/update succeeded
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while saving the high score: {ex.Message}");
-                return false;
-            }
-        }
-
         private void BtnStart_MouseEnter(object sender, EventArgs e)
         {
             // Cast the sender to a Button so you can access its properties
@@ -233,7 +250,8 @@ namespace QuizMester_Danial
             {
                 btn.BackColor = Color.White; // Change this to any color you prefer
 
-                lbSelector.Text = btn.Text;
+
+                lblSelector.Text = btn.Text;
 
 
             }
@@ -247,8 +265,15 @@ namespace QuizMester_Danial
             {
                 btn.BackColor = Color.Silver; // Change this to the original color
 
-                lbSelector.Text = "Ready?";
+                if (started)
+                {
+                    lblSelector.Text = "?";
 
+                }
+                else
+                {
+                    lblSelector.Text = "Ready?";
+                }
             }
         }
 
@@ -268,21 +293,39 @@ namespace QuizMester_Danial
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            if (started)
+            if (choose)
             {
-
+                btnCategory_Click(sender, e);
+            }
+            else if (started)
+            {
+                AnswerButton_Click(sender, e);
             }
             else
             {
-                //started = true;
+                choose = true;
+                btn1.Text = "Minecraft";
+                btn2.Text = "Geography";
+                btn3.Text = "General-Knowledge";
+                btn4.Text = "Trick-Question";
+
+                AdjustButtonFontSize(btn1);
+                AdjustButtonFontSize(btn2);
+                AdjustButtonFontSize(btn3);
+                AdjustButtonFontSize(btn4);
             }
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            if (started)
+            if (choose)
             {
+                btnCategory_Click(sender, e);
 
+            }
+            else if (started)
+            {
+                AnswerButton_Click(sender, e);
             }
             else
             {
@@ -299,9 +342,14 @@ namespace QuizMester_Danial
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            if (started)
+            if (choose)
             {
+                btnCategory_Click(sender, e);
 
+            }
+            else if (started)
+            {
+                AnswerButton_Click(sender, e);
             }
             else
             {
@@ -311,9 +359,14 @@ namespace QuizMester_Danial
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            if (started)
+            if (choose)
             {
+                btnCategory_Click(sender, e);
 
+            }
+            else if (started)
+            {
+                AnswerButton_Click(sender, e);
             }
             else
             {
@@ -336,5 +389,184 @@ namespace QuizMester_Danial
             tcQuiz.SelectedIndex = 3;
 
         }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                string selectedCategory = clickedButton.Text; // Or use Tag property for categories
+                questionManager.LoadQuestions(selectedCategory);
+
+                choose = false;
+                started = true;
+                ShowNextQuestion(); // Show the first question
+            }
+        }
+
+        private int currentQuestionIndex = 0;
+        private int totalQuestions = 10; // Update with the actual total number of questions
+
+        private void ShowNextQuestion()
+        {
+            var question = questionManager.GetNextQuestion();
+            if (question != null)
+            {
+                lblQuestion.Text = question.Text;
+                AdjustLabelFontSize(lblQuestion);
+
+                btn1.Text = question.Answers[0];
+                btn2.Text = question.Answers[1];
+                btn3.Text = question.Answers[2];
+                btn4.Text = question.Answers[3];
+
+                AdjustButtonFontSize(btn1);
+                AdjustButtonFontSize(btn2);
+                AdjustButtonFontSize(btn3);
+                AdjustButtonFontSize(btn4);
+
+                // Initialize points and time
+                totalPoints = 100;
+                timeLeft = 10;
+                pgbTimeLeft.Value = 100;
+                timerQuestionTime.Start();
+
+                currentQuestionIndex++;
+                lblQuestionNumber.Text = $"Question: {currentQuestionIndex} of {totalQuestions}";
+
+                currentQuestion = question;
+            }
+            else
+            {
+                MessageBox.Show("No more questions.");
+                timerQuestionTime.Stop();
+                // Optionally, reset or end the quiz
+            }
+        }
+
+
+
+
+        private void AnswerButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            if (clickedButton != null && currentQuestion != null)
+            {
+                string selectedAnswer = clickedButton.Text;
+                if (questionManager.CheckAnswer(selectedAnswer, currentQuestion))
+                {
+                    timerQuestionTime.Stop();
+                    MessageBox.Show($"Correct! Points: {totalPoints}");
+                    ShowNextQuestion(); // Load the next question automatically
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect, try again.");
+                }
+            }
+        }
+
+
+        private void AdjustLabelFontSize(Label label)
+        {
+            // Define the minimum and maximum font size
+            float minFontSize = 8;
+            float maxFontSize = 28; // Adjust as necessary
+            float fontSize = maxFontSize;
+            SizeF textSize;
+
+            using (Graphics g = label.CreateGraphics())
+            {
+                // Try to increase font size first
+                do
+                {
+                    using (Font font = new Font("Gadugi", fontSize, FontStyle.Bold))
+                    {
+                        textSize = g.MeasureString(label.Text, font, label.Width);
+
+                        // If text height exceeds twice the label's height, decrease the font size
+                        if (textSize.Height > label.Height * 2)
+                        {
+                            fontSize -= 1;
+                        }
+                    }
+                } while (textSize.Width > label.Width || textSize.Height > label.Height * 2 && fontSize > minFontSize);
+
+                // If the text is too small, increase the font size (if possible)
+                fontSize = minFontSize;
+                do
+                {
+                    using (Font font = new Font("Gadugi", fontSize, FontStyle.Bold))
+                    {
+                        textSize = g.MeasureString(label.Text, font, label.Width);
+
+                        // Increase the font size as long as it fits within the label
+                        if (textSize.Width <= label.Width && textSize.Height <= label.Height * 2)
+                        {
+                            fontSize += 1;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                } while (fontSize <= maxFontSize);
+
+                // Use the largest fitting font size
+                label.Font = new Font("Gadugi", fontSize - 1, FontStyle.Bold); // Subtract 1 to ensure it fits
+            }
+        }
+
+        private void AdjustButtonFontSize(Button button)
+        {
+            // Define the minimum and maximum font size
+            float minFontSize = 8;
+            float maxFontSize = 22; // Adjust as necessary
+            float fontSize = maxFontSize;
+            SizeF textSize;
+
+            using (Graphics g = button.CreateGraphics())
+            {
+                // Try to increase font size first
+                do
+                {
+                    using (Font font = new Font("Gadugi", fontSize, FontStyle.Bold))
+                    {
+                        textSize = g.MeasureString(button.Text, font, button.Width);
+
+                        // If text height exceeds button height, decrease the font size
+                        if (textSize.Height > button.Height)
+                        {
+                            fontSize -= 1;
+                        }
+                    }
+                } while (textSize.Width > button.Width || textSize.Height > button.Height && fontSize > minFontSize);
+
+                // If the text is too small, increase the font size (if possible)
+                fontSize = minFontSize;
+                do
+                {
+                    using (Font font = new Font("Gadugi", fontSize, FontStyle.Bold))
+                    {
+                        textSize = g.MeasureString(button.Text, font, button.Width);
+
+                        // Increase the font size as long as it fits within the button
+                        if (textSize.Width <= button.Width && textSize.Height <= button.Height)
+                        {
+                            fontSize += 1;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                } while (fontSize <= maxFontSize);
+
+                // Use the largest fitting font size
+                button.Font = new Font("Gadugi", fontSize - 1, FontStyle.Bold); // Subtract 1 to ensure it fits
+            }
+        }
+
+
     }
 }

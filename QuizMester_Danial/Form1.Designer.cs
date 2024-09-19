@@ -51,25 +51,26 @@
             this.txbRegisterUsername = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.tpLeaderboard = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rtbLeaderboard = new System.Windows.Forms.RichTextBox();
-            this.btnBack3 = new System.Windows.Forms.Button();
             this.tpQuiz = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblQuestionNumber = new System.Windows.Forms.Label();
+            this.pgbTimeLeft = new System.Windows.Forms.ProgressBar();
             this.btn1 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
             this.btn4 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
-            this.lbSelector = new System.Windows.Forms.Label();
+            this.lblSelector = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.tpLeaderboard = new System.Windows.Forms.TabPage();
+            this.btnBack3 = new System.Windows.Forms.Button();
+            this.rtbLeaderboard = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tcQuiz.SuspendLayout();
             this.tpStart.SuspendLayout();
             this.tpLogin.SuspendLayout();
             this.tpRegister.SuspendLayout();
-            this.tpLeaderboard.SuspendLayout();
             this.tpQuiz.SuspendLayout();
+            this.tpLeaderboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -343,6 +344,169 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // tpQuiz
+            // 
+            this.tpQuiz.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpQuiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpQuiz.Controls.Add(this.lblQuestionNumber);
+            this.tpQuiz.Controls.Add(this.pgbTimeLeft);
+            this.tpQuiz.Controls.Add(this.btn1);
+            this.tpQuiz.Controls.Add(this.btn3);
+            this.tpQuiz.Controls.Add(this.btn4);
+            this.tpQuiz.Controls.Add(this.btn2);
+            this.tpQuiz.Controls.Add(this.lblSelector);
+            this.tpQuiz.Controls.Add(this.lblQuestion);
+            this.tpQuiz.Controls.Add(this.lblUsername);
+            this.tpQuiz.Location = new System.Drawing.Point(4, 25);
+            this.tpQuiz.Name = "tpQuiz";
+            this.tpQuiz.Padding = new System.Windows.Forms.Padding(3);
+            this.tpQuiz.Size = new System.Drawing.Size(850, 600);
+            this.tpQuiz.TabIndex = 3;
+            this.tpQuiz.Text = "Quiz";
+            this.tpQuiz.UseVisualStyleBackColor = true;
+            // 
+            // lblQuestionNumber
+            // 
+            this.lblQuestionNumber.AutoSize = true;
+            this.lblQuestionNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestionNumber.ForeColor = System.Drawing.Color.White;
+            this.lblQuestionNumber.Location = new System.Drawing.Point(666, 5);
+            this.lblQuestionNumber.Name = "lblQuestionNumber";
+            this.lblQuestionNumber.Size = new System.Drawing.Size(90, 20);
+            this.lblQuestionNumber.TabIndex = 18;
+            this.lblQuestionNumber.Text = "Question:";
+            // 
+            // pgbTimeLeft
+            // 
+            this.pgbTimeLeft.Location = new System.Drawing.Point(63, 552);
+            this.pgbTimeLeft.Name = "pgbTimeLeft";
+            this.pgbTimeLeft.Size = new System.Drawing.Size(726, 23);
+            this.pgbTimeLeft.TabIndex = 17;
+            this.pgbTimeLeft.Value = 100;
+            // 
+            // btn1
+            // 
+            this.btn1.AllowDrop = true;
+            this.btn1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn1.BackColor = System.Drawing.Color.Silver;
+            this.btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn1.FlatAppearance.BorderSize = 10;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn1.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.ForeColor = System.Drawing.Color.Black;
+            this.btn1.Location = new System.Drawing.Point(63, 323);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(360, 100);
+            this.btn1.TabIndex = 16;
+            this.btn1.Text = "Yes";
+            this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn1.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn1.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn3
+            // 
+            this.btn3.AllowDrop = true;
+            this.btn3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn3.BackColor = System.Drawing.Color.Silver;
+            this.btn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn3.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn3.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn3.FlatAppearance.BorderSize = 10;
+            this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn3.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.ForeColor = System.Drawing.Color.Black;
+            this.btn3.Location = new System.Drawing.Point(63, 429);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(360, 100);
+            this.btn3.TabIndex = 15;
+            this.btn3.Text = "Leaderboard";
+            this.btn3.UseVisualStyleBackColor = false;
+            this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            this.btn3.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn3.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn4
+            // 
+            this.btn4.AllowDrop = true;
+            this.btn4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn4.BackColor = System.Drawing.Color.Silver;
+            this.btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn4.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn4.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn4.FlatAppearance.BorderSize = 10;
+            this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn4.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.ForeColor = System.Drawing.Color.Black;
+            this.btn4.Location = new System.Drawing.Point(429, 429);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(360, 100);
+            this.btn4.TabIndex = 14;
+            this.btn4.Text = "Logout";
+            this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn4.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn4.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // btn2
+            // 
+            this.btn2.AllowDrop = true;
+            this.btn2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn2.BackColor = System.Drawing.Color.Silver;
+            this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn2.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.btn2.FlatAppearance.BorderSize = 10;
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn2.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.ForeColor = System.Drawing.Color.Black;
+            this.btn2.Location = new System.Drawing.Point(429, 323);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(360, 100);
+            this.btn2.TabIndex = 13;
+            this.btn2.Text = "No";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            this.btn2.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
+            this.btn2.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
+            // 
+            // lblSelector
+            // 
+            this.lblSelector.Font = new System.Drawing.Font("Gadugi", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelector.ForeColor = System.Drawing.Color.White;
+            this.lblSelector.Location = new System.Drawing.Point(63, 225);
+            this.lblSelector.Name = "lblSelector";
+            this.lblSelector.Size = new System.Drawing.Size(726, 95);
+            this.lblSelector.TabIndex = 11;
+            this.lblSelector.Text = "Ready?";
+            this.lblSelector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblQuestion
+            // 
+            this.lblQuestion.AllowDrop = true;
+            this.lblQuestion.Cursor = System.Windows.Forms.Cursors.Help;
+            this.lblQuestion.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestion.ForeColor = System.Drawing.Color.White;
+            this.lblQuestion.Location = new System.Drawing.Point(29, 38);
+            this.lblQuestion.Name = "lblQuestion";
+            this.lblQuestion.Size = new System.Drawing.Size(800, 206);
+            this.lblQuestion.TabIndex = 10;
+            this.lblQuestion.Text = "QuizMester!";
+            this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(3, 3);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(205, 22);
+            this.lblUsername.TabIndex = 0;
+            this.lblUsername.Text = "Logged in as: Username";
+            // 
             // tpLeaderboard
             // 
             this.tpLeaderboard.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
@@ -357,28 +521,6 @@
             this.tpLeaderboard.Text = "Leaderboard";
             this.tpLeaderboard.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(58, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(726, 134);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "LeaderBoard";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // rtbLeaderboard
-            // 
-            this.rtbLeaderboard.BackColor = System.Drawing.Color.Gray;
-            this.rtbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbLeaderboard.ForeColor = System.Drawing.Color.White;
-            this.rtbLeaderboard.Location = new System.Drawing.Point(143, 152);
-            this.rtbLeaderboard.Name = "rtbLeaderboard";
-            this.rtbLeaderboard.Size = new System.Drawing.Size(547, 323);
-            this.rtbLeaderboard.TabIndex = 13;
-            this.rtbLeaderboard.Text = resources.GetString("rtbLeaderboard.Text");
-            // 
             // btnBack3
             // 
             this.btnBack3.BackColor = System.Drawing.Color.White;
@@ -392,150 +534,27 @@
             this.btnBack3.UseVisualStyleBackColor = false;
             this.btnBack3.Click += new System.EventHandler(this.btnBack3_Click);
             // 
-            // tpQuiz
+            // rtbLeaderboard
             // 
-            this.tpQuiz.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
-            this.tpQuiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpQuiz.Controls.Add(this.richTextBox1);
-            this.tpQuiz.Controls.Add(this.btn1);
-            this.tpQuiz.Controls.Add(this.btn3);
-            this.tpQuiz.Controls.Add(this.btn4);
-            this.tpQuiz.Controls.Add(this.btn2);
-            this.tpQuiz.Controls.Add(this.lbSelector);
-            this.tpQuiz.Controls.Add(this.lblQuestion);
-            this.tpQuiz.Controls.Add(this.lblUsername);
-            this.tpQuiz.Location = new System.Drawing.Point(4, 25);
-            this.tpQuiz.Name = "tpQuiz";
-            this.tpQuiz.Padding = new System.Windows.Forms.Padding(3);
-            this.tpQuiz.Size = new System.Drawing.Size(850, 600);
-            this.tpQuiz.TabIndex = 3;
-            this.tpQuiz.Text = "Quiz";
-            this.tpQuiz.UseVisualStyleBackColor = true;
+            this.rtbLeaderboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rtbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbLeaderboard.ForeColor = System.Drawing.Color.White;
+            this.rtbLeaderboard.Location = new System.Drawing.Point(143, 152);
+            this.rtbLeaderboard.Name = "rtbLeaderboard";
+            this.rtbLeaderboard.Size = new System.Drawing.Size(547, 323);
+            this.rtbLeaderboard.TabIndex = 13;
+            this.rtbLeaderboard.Text = resources.GetString("rtbLeaderboard.Text");
             // 
-            // richTextBox1
+            // label6
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(146, 204);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(8, 8);
-            this.richTextBox1.TabIndex = 17;
-            this.richTextBox1.Text = "";
-            // 
-            // btn1
-            // 
-            this.btn1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn1.BackColor = System.Drawing.Color.Silver;
-            this.btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn1.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.btn1.FlatAppearance.BorderSize = 10;
-            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn1.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.ForeColor = System.Drawing.Color.Black;
-            this.btn1.Location = new System.Drawing.Point(63, 323);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(360, 100);
-            this.btn1.TabIndex = 16;
-            this.btn1.Text = "Yes";
-            this.btn1.UseVisualStyleBackColor = false;
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
-            this.btn1.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
-            this.btn1.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
-            // 
-            // btn3
-            // 
-            this.btn3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn3.BackColor = System.Drawing.Color.Silver;
-            this.btn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn3.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btn3.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.btn3.FlatAppearance.BorderSize = 10;
-            this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn3.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3.ForeColor = System.Drawing.Color.Black;
-            this.btn3.Location = new System.Drawing.Point(63, 429);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(360, 100);
-            this.btn3.TabIndex = 15;
-            this.btn3.Text = "Leaderboard";
-            this.btn3.UseVisualStyleBackColor = false;
-            this.btn3.Click += new System.EventHandler(this.btn3_Click);
-            this.btn3.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
-            this.btn3.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
-            // 
-            // btn4
-            // 
-            this.btn4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn4.BackColor = System.Drawing.Color.Silver;
-            this.btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn4.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btn4.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.btn4.FlatAppearance.BorderSize = 10;
-            this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn4.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4.ForeColor = System.Drawing.Color.Black;
-            this.btn4.Location = new System.Drawing.Point(429, 429);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(360, 100);
-            this.btn4.TabIndex = 14;
-            this.btn4.Text = "Logout";
-            this.btn4.UseVisualStyleBackColor = false;
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
-            this.btn4.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
-            this.btn4.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
-            // 
-            // btn2
-            // 
-            this.btn2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn2.BackColor = System.Drawing.Color.Silver;
-            this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn2.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
-            this.btn2.FlatAppearance.BorderSize = 10;
-            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn2.Font = new System.Drawing.Font("Gadugi", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.ForeColor = System.Drawing.Color.Black;
-            this.btn2.Location = new System.Drawing.Point(429, 323);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(360, 100);
-            this.btn2.TabIndex = 13;
-            this.btn2.Text = "No";
-            this.btn2.UseVisualStyleBackColor = false;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
-            this.btn2.MouseEnter += new System.EventHandler(this.BtnStart_MouseEnter);
-            this.btn2.MouseLeave += new System.EventHandler(this.BtnStart_MouseLeave);
-            // 
-            // lbSelector
-            // 
-            this.lbSelector.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSelector.ForeColor = System.Drawing.Color.White;
-            this.lbSelector.Location = new System.Drawing.Point(63, 194);
-            this.lbSelector.Name = "lbSelector";
-            this.lbSelector.Size = new System.Drawing.Size(726, 95);
-            this.lbSelector.TabIndex = 11;
-            this.lbSelector.Text = "Ready?";
-            this.lbSelector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblQuestion
-            // 
-            this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Font = new System.Drawing.Font("Gadugi", 55.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestion.ForeColor = System.Drawing.Color.White;
-            this.lblQuestion.Location = new System.Drawing.Point(127, 43);
-            this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(574, 111);
-            this.lblQuestion.TabIndex = 10;
-            this.lblQuestion.Text = "Quizmester!";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(3, 3);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(205, 22);
-            this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Logged in as: Username";
+            this.label6.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(58, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(726, 134);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "LeaderBoard";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -546,6 +565,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "QuizMester";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tcQuiz.ResumeLayout(false);
             this.tpStart.ResumeLayout(false);
             this.tpStart.PerformLayout();
@@ -553,9 +573,9 @@
             this.tpLogin.PerformLayout();
             this.tpRegister.ResumeLayout(false);
             this.tpRegister.PerformLayout();
-            this.tpLeaderboard.ResumeLayout(false);
             this.tpQuiz.ResumeLayout(false);
             this.tpQuiz.PerformLayout();
+            this.tpLeaderboard.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -580,13 +600,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lbSelector;
+        private System.Windows.Forms.Label lblSelector;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn4;
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbRegisterPassword;
@@ -597,6 +616,8 @@
         private System.Windows.Forms.RichTextBox rtbLeaderboard;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnBack3;
+        private System.Windows.Forms.ProgressBar pgbTimeLeft;
+        private System.Windows.Forms.Label lblQuestionNumber;
     }
 }
 
