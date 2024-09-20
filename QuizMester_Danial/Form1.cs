@@ -23,9 +23,14 @@ namespace QuizMester_Danial
         private QuestionManager questionManager = new QuestionManager();
         private Question currentQuestion;
 
-        private int totalPoints = 100;
-        private double timeLeft = 10; // in seconds
-        private Timer timerQuestionTime;
+        private int totalPointsQuestion = 100;
+        private int totalScore = 0;
+        private double timeLeftQuestion = 10; // in seconds
+        private double timeLeftTotal = 60;
+        private Timer timerQuiz;
+
+        private int currentQuestionIndex = 0;
+        private int totalQuestions = 20; // Update with the actual total number of questions
 
 
         public Form1()
@@ -39,27 +44,50 @@ namespace QuizMester_Danial
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            timerQuestionTime = new Timer();
-            timerQuestionTime.Interval = 100; // 100 miliseconds
-            timerQuestionTime.Tick += TimerQuestionTime_Tick;
-
+            timerQuiz = new Timer();
+            timerQuiz.Interval = 100; // 100 miliseconds
+            timerQuiz.Tick += TimerQuizTime_Tick;
+            LoadLeaderboard();
         }
 
-        private void TimerQuestionTime_Tick(object sender, EventArgs e)
+        private void TimerQuizTime_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
+            if (timeLeftQuestion > 0)
             {
-                timeLeft -= timerQuestionTime.Interval / 1000.0; // Calculate elapsed time
-                totalPoints = CalculateGradualPoints(100, 10 - timeLeft); // Update points
+                timeLeftQuestion -= timerQuiz.Interval / 1000.0; // Calculate elapsed time
+                totalPointsQuestion = CalculateGradualPoints(100, 10 - timeLeftQuestion); // Update points
 
-                pgbTimeLeft.Value = (int)((timeLeft / 10.0) * 100); // Update ProgressBar
+                pgbTimeLeftQuestion.Value = (int)((timeLeftQuestion / 10) * 100); // Update ProgressBar
 
-                if (timeLeft <= 0)
+                if(pgbTimeLeftQuestion.Value < 40)
+                {
+                    pgbTimeLeftQuestion.ForeColor = Color.Red;
+                }
+                else
+                {
+                    pgbTimeLeftQuestion.ForeColor = Color.Green;
+                }
+
+                if (timeLeftQuestion <= 0)
                 {
                     // Time's up, show next question
-                    timerQuestionTime.Stop();
-                    MessageBox.Show("Time's up!");
+                    timerQuiz.Stop();
+                    MessageBox.Show("Time's up for this quesrtion!");
                     ShowNextQuestion();
+                }
+            }
+
+            if (timeLeftTotal > 0)
+            {
+                timeLeftTotal -= timerQuiz.Interval / 1000.0; // Calculate elapsed time
+
+                pgbTimeLeftTotal.Value = (int)((timeLeftTotal / 60) * 100); // Update ProgressBar
+
+                if (timeLeftTotal <= 0)
+                {
+                    // Time's up, show next question
+                    MessageBox.Show("Time's up! end of quiz!");
+                    EndQuiz();
                 }
             }
         }
@@ -161,19 +189,37 @@ namespace QuizMester_Danial
         {
             // Connection string for localhost
             string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
-            string query = "INSERT INTO login (playerName, playerPassword) VALUES (@PlayerName, @PlayerPassword)";
+
+            // Query to check if the username already exists
+            string checkQuery = "SELECT COUNT(*) FROM login WHERE playerName = @PlayerName";
+            string insertQuery = "INSERT INTO login (playerName, playerPassword) VALUES (@PlayerName, @PlayerPassword)";
 
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@PlayerName", playerName);
-                        cmd.Parameters.AddWithValue("@PlayerPassword", playerPassword);
 
-                        int result = cmd.ExecuteNonQuery();
+                    // Check if the username is already taken
+                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@PlayerName", playerName);
+                        int userCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (userCount > 0)
+                        {
+                            MessageBox.Show("Username is already taken. Please choose a different username.");
+                            return false; // Username is already taken
+                        }
+                    }
+
+                    // If the username is available, proceed to insert
+                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@PlayerName", playerName);
+                        insertCmd.Parameters.AddWithValue("@PlayerPassword", playerPassword);
+
+                        int result = insertCmd.ExecuteNonQuery();
                         return result > 0; // Return true if the insert succeeded
                     }
                 }
@@ -184,6 +230,7 @@ namespace QuizMester_Danial
                 return false;
             }
         }
+
 
 
 
@@ -404,8 +451,7 @@ namespace QuizMester_Danial
             }
         }
 
-        private int currentQuestionIndex = 0;
-        private int totalQuestions = 10; // Update with the actual total number of questions
+
 
         private void ShowNextQuestion()
         {
@@ -426,10 +472,10 @@ namespace QuizMester_Danial
                 AdjustButtonFontSize(btn4);
 
                 // Initialize points and time
-                totalPoints = 100;
-                timeLeft = 10;
-                pgbTimeLeft.Value = 100;
-                timerQuestionTime.Start();
+                totalPointsQuestion = 100;
+                timeLeftQuestion = 10;
+                pgbTimeLeftQuestion.Value = 100;
+                timerQuiz.Start();
 
                 currentQuestionIndex++;
                 lblQuestionNumber.Text = $"Question: {currentQuestionIndex} of {totalQuestions}";
@@ -439,7 +485,7 @@ namespace QuizMester_Danial
             else
             {
                 MessageBox.Show("No more questions.");
-                timerQuestionTime.Stop();
+                EndQuiz();
                 // Optionally, reset or end the quiz
             }
         }
@@ -455,8 +501,9 @@ namespace QuizMester_Danial
                 string selectedAnswer = clickedButton.Text;
                 if (questionManager.CheckAnswer(selectedAnswer, currentQuestion))
                 {
-                    timerQuestionTime.Stop();
-                    MessageBox.Show($"Correct! Points: {totalPoints}");
+                    timerQuiz.Stop();
+                    totalScore += totalPointsQuestion; // Add points for correct answer
+                    MessageBox.Show($"Correct! Points: {totalPointsQuestion}");
                     ShowNextQuestion(); // Load the next question automatically
                 }
                 else
@@ -465,6 +512,7 @@ namespace QuizMester_Danial
                 }
             }
         }
+
 
 
         private void AdjustLabelFontSize(Label label)
@@ -567,6 +615,111 @@ namespace QuizMester_Danial
             }
         }
 
+        private void ResetQuiz()
+        {
+            // Reset quiz state
+            totalPointsQuestion = 100;
+            timeLeftQuestion = 10;
+            timeLeftTotal = 60;
+            currentQuestionIndex = 0;
+            questionManager = new QuestionManager(); // Create a new instance to load new questions
+            lblQuestion.Text = "QuizMester!"; // Clear the question label
+            pgbTimeLeftQuestion.Value = 100; // Reset question progress bar
+            pgbTimeLeftTotal.Value = 100; // Reset total progress bar
+            lblYourScore.Text = ""; // Clear the score label
+
+            started = false;
+            choose = false;
+
+            // Clear previous button texts
+            btn1.Text = "Yes";
+            btn2.Text = "No";
+            btn3.Text = "Leaderboard";
+            btn4.Text = "Logout";
+
+            // Reset UI elements if necessary
+            lblQuestionNumber.Text = "Question: 0 of " + totalQuestions;
+            lblUsername.Text = $"Logged in as: {loggedInUsername}"; // Keep username displayed if logged in
+
+            // Redirect to category selection
+        }
+
+        private void btnPlayAgain_Click(object sender, EventArgs e)
+        {
+            ResetQuiz();
+            tcQuiz.SelectedIndex = 3;
+        }
+
+        private void btnLeaderboard_Click(object sender, EventArgs e)
+        {
+            ResetQuiz();
+            tcQuiz.SelectedIndex = 4;
+        }
+
+        public void UpdateHighScore(string playerName, int newScore)
+        {
+            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
+            string query = "UPDATE login SET playerHighscore = @NewScore WHERE playerName = @PlayerName AND playerHighscore < @NewScore";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NewScore", newScore);
+                        cmd.Parameters.AddWithValue("@PlayerName", playerName);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating high score: {ex.Message}");
+            }
+        }
+
+
+        public void LoadLeaderboard()
+        {
+            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
+            string query = "SELECT playerName, playerHighscore FROM login ORDER BY playerHighscore DESC LIMIT 10";
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        rtbLeaderboard.Clear(); // Clear existing entries
+
+                        while (reader.Read())
+                        {
+                            string name = reader["playerName"].ToString();
+                            string score = reader["playerHighscore"].ToString();
+                            rtbLeaderboard.AppendText($"{name}:     ---     {score}\n"); // Display in the RichTextBox
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading leaderboard: {ex.Message}");
+            }
+        }
+
+        private void EndQuiz()
+        {
+            timerQuiz.Stop();
+            UpdateHighScore(loggedInUsername, totalScore);
+            LoadLeaderboard();
+            lblYourScore.Text = totalScore.ToString();
+            tcQuiz.SelectedIndex = 5;
+        }
 
     }
 }

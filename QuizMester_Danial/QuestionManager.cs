@@ -23,7 +23,7 @@ namespace QuizMester_Danial
         FROM quiz
         WHERE QuestionCategory = @Category
         ORDER BY RAND()
-        LIMIT 10";
+        LIMIT 20";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
