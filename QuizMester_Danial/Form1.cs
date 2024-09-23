@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,6 +33,15 @@ namespace QuizMester_Danial
         private int currentQuestionIndex = 0;
         private int totalQuestions = 20; // Update with the actual total number of questions
 
+        private int personalHighScore = 0; // Store the player's personal highest score
+
+        public string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
+
+
+        SoundPlayer correct = new SoundPlayer(@"C:\Users\Danial\Desktop\Appr\QuizMester-Danial-Github\QuizMester_Danial\Resources\sfx\rizz-sfx.wav");
+        SoundPlayer wrong = new SoundPlayer(@"C:\Users\Danial\Desktop\Appr\QuizMester-Danial-Github\QuizMester_Danial\Resources\sfx\wrong-buzzer.wav");
+        SoundPlayer timesUp = new SoundPlayer(@"C:\Users\Danial\Desktop\Appr\QuizMester-Danial-Github\QuizMester_Danial\Resources\sfx\boowomp.wav");
+
 
         public Form1()
         {
@@ -40,6 +50,7 @@ namespace QuizMester_Danial
             tcQuiz.ItemSize = new Size(0, 1);
             tcQuiz.SizeMode = TabSizeMode.Fixed;
 
+            lblHighscore.Text = personalHighScore.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -48,6 +59,7 @@ namespace QuizMester_Danial
             timerQuiz.Interval = 100; // 100 miliseconds
             timerQuiz.Tick += TimerQuizTime_Tick;
             LoadLeaderboard();
+            lblHighscore.Text = personalHighScore.ToString();
         }
 
         private void TimerQuizTime_Tick(object sender, EventArgs e)
@@ -73,6 +85,7 @@ namespace QuizMester_Danial
                     // Time's up, show next question
                     timerQuiz.Stop();
                     MessageBox.Show("Time's up for this quesrtion!");
+                    timesUp.Play();
                     ShowNextQuestion();
                 }
             }
@@ -146,6 +159,7 @@ namespace QuizMester_Danial
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}");
             }
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -164,6 +178,7 @@ namespace QuizMester_Danial
                 {
                     loggedInUsername = username;  // Store the logged-in username
                     lblUsername.Text = $"Logged in as: {loggedInUsername}";  // Update the label with the username
+                    GetPersonalHighScore(username);
 
                     DialogResult result = MessageBox.Show("Login succesful!", "Logged in", MessageBoxButtons.OK);
 
@@ -188,7 +203,6 @@ namespace QuizMester_Danial
         public bool RegisterUser(string playerName, string playerPassword)
         {
             // Connection string for localhost
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
 
             // Query to check if the username already exists
             string checkQuery = "SELECT COUNT(*) FROM login WHERE playerName = @PlayerName";
@@ -217,12 +231,17 @@ namespace QuizMester_Danial
                     using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn))
                     {
                         insertCmd.Parameters.AddWithValue("@PlayerName", playerName);
-                        insertCmd.Parameters.AddWithValue("@PlayerPassword", playerPassword);
+                        insertCmd.Parameters.AddWithValue("@PlayerPassword", playerPassword); // Consider hashing the password
 
                         int result = insertCmd.ExecuteNonQuery();
                         return result > 0; // Return true if the insert succeeded
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"A database error occurred while registering: {ex.Message}");
+                return false;
             }
             catch (Exception ex)
             {
@@ -231,13 +250,9 @@ namespace QuizMester_Danial
             }
         }
 
-
-
-
         public bool LoginUser(string playerName, string playerPassword)
         {
             // Connection string for localhost
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
             string query = "SELECT COUNT(*) FROM login WHERE playerName = @PlayerName AND playerPassword = @PlayerPassword";
 
             try
@@ -262,10 +277,8 @@ namespace QuizMester_Danial
             }
         }
 
-
         public string GetQuestion(int questionId)
         {
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
             string query = "SELECT Question FROM quiz WHERE QuestionId = @QuestionId";
 
             try
@@ -295,12 +308,9 @@ namespace QuizMester_Danial
             Button btn = sender as Button;
             if (btn != null)
             {
-                btn.BackColor = Color.White; // Change this to any color you prefer
-
+                btn.BackColor = Color.FromArgb(32,32,32); // Change this to any color you prefer
 
                 lblSelector.Text = btn.Text;
-
-
             }
         }
 
@@ -310,8 +320,7 @@ namespace QuizMester_Danial
             Button btn = sender as Button;
             if (btn != null)
             {
-                btn.BackColor = Color.Silver; // Change this to the original color
-
+                btn.BackColor = Color.FromArgb(48, 48, 48);
                 if (started)
                 {
                     lblSelector.Text = "?";
@@ -323,8 +332,6 @@ namespace QuizMester_Danial
                 }
             }
         }
-
-
 
         public void Logout()
         {
@@ -451,8 +458,6 @@ namespace QuizMester_Danial
             }
         }
 
-
-
         private void ShowNextQuestion()
         {
             var question = questionManager.GetNextQuestion();
@@ -503,17 +508,28 @@ namespace QuizMester_Danial
                 {
                     timerQuiz.Stop();
                     totalScore += totalPointsQuestion; // Add points for correct answer
-                    MessageBox.Show($"Correct! Points: {totalPointsQuestion}");
+                    Correct(true);
+                    correct.Play();
                     ShowNextQuestion(); // Load the next question automatically
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect, try again.");
+                    Correct(false);
+                    wrong.Play();
+                    ShowNextQuestion(); // Load the next question automatically
                 }
             }
         }
 
-
+        private async void Correct(bool correct)
+        {
+            // Set the background color based on correctness
+            Color flashColor = correct ? Color.Green : Color.Red;
+            int flashSpeed = 50;
+            this.BackColor = flashColor;
+            await Task.Delay(flashSpeed);
+            this.BackColor = Color.Black;
+        }
 
         private void AdjustLabelFontSize(Label label)
         {
@@ -658,8 +674,7 @@ namespace QuizMester_Danial
 
         public void UpdateHighScore(string playerName, int newScore)
         {
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
-            string query = "UPDATE login SET playerHighscore = @NewScore WHERE playerName = @PlayerName AND playerHighscore < @NewScore";
+            string query = "INSERT INTO scores (playerName, PlayerScore) VALUES (@PlayerName, @PlayerScore)";
 
             try
             {
@@ -668,8 +683,8 @@ namespace QuizMester_Danial
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@NewScore", newScore);
                         cmd.Parameters.AddWithValue("@PlayerName", playerName);
+                        cmd.Parameters.AddWithValue("@PlayerScore", newScore);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -681,11 +696,9 @@ namespace QuizMester_Danial
             }
         }
 
-
         public void LoadLeaderboard()
         {
-            string connectionString = "Server=localhost;Database=quizmester;Uid=root;Pwd=;";
-            string query = "SELECT playerName, playerHighscore FROM login ORDER BY playerHighscore DESC LIMIT 10";
+            string query = "SELECT playerName, PlayerScore FROM scores ORDER BY PlayerScore DESC LIMIT 10";
 
             try
             {
@@ -696,12 +709,13 @@ namespace QuizMester_Danial
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         rtbLeaderboard.Clear(); // Clear existing entries
-
+                        int place = 0;
                         while (reader.Read())
                         {
+                            place++;
                             string name = reader["playerName"].ToString();
-                            string score = reader["playerHighscore"].ToString();
-                            rtbLeaderboard.AppendText($"{name}:     ---     {score}\n"); // Display in the RichTextBox
+                            string score = reader["PlayerScore"].ToString();
+                            rtbLeaderboard.AppendText($"#{place} {name}:     ---     {score}\n"); // Display in the RichTextBox
                         }
                     }
                 }
@@ -715,10 +729,45 @@ namespace QuizMester_Danial
         private void EndQuiz()
         {
             timerQuiz.Stop();
-            UpdateHighScore(loggedInUsername, totalScore);
-            LoadLeaderboard();
+            UpdateHighScore(loggedInUsername, totalScore); // Update the score in the scores table
+            LoadLeaderboard(); // Load the leaderboard after updating
             lblYourScore.Text = totalScore.ToString();
             tcQuiz.SelectedIndex = 5;
+        }
+
+        public void GetPersonalHighScore(string playerName)
+        {
+            string query = "SELECT MAX(PlayerScore) FROM scores WHERE playerName = @playerName";
+            string highScore = "0000"; // Default to "0000" if no score is found
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Add the playerName parameter to avoid SQL injection
+                        cmd.Parameters.AddWithValue("@playerName", playerName);
+
+                        // Since you're getting a single value, use ExecuteScalar, not ExecuteReader
+                        object result = cmd.ExecuteScalar();
+
+                        // Check if the result is null or DBNull and update highScore accordingly
+                        if (result != null && result != DBNull.Value)
+                        {
+                            highScore = result.ToString();
+                        }
+
+                        // Update lblHighscore with the highScore value
+                        lblHighscore.Text = highScore;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading Personal Highscore: {ex.Message}");
+            }
         }
 
     }

@@ -63,6 +63,8 @@
             this.lblQuestion = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.tpLeaderboard = new System.Windows.Forms.TabPage();
+            this.lblHighscore = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnBack3 = new System.Windows.Forms.Button();
             this.rtbLeaderboard = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -72,7 +74,6 @@
             this.lblYourScore = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.tcQuiz.SuspendLayout();
             this.tpStart.SuspendLayout();
             this.tpLogin.SuspendLayout();
@@ -96,24 +97,28 @@
             // 
             // btnStartLogin
             // 
-            this.btnStartLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnStartLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartLogin.ForeColor = System.Drawing.Color.White;
             this.btnStartLogin.Location = new System.Drawing.Point(287, 316);
             this.btnStartLogin.Name = "btnStartLogin";
             this.btnStartLogin.Size = new System.Drawing.Size(270, 89);
             this.btnStartLogin.TabIndex = 1;
             this.btnStartLogin.Text = "Log in";
-            this.btnStartLogin.UseVisualStyleBackColor = true;
+            this.btnStartLogin.UseVisualStyleBackColor = false;
             this.btnStartLogin.Click += new System.EventHandler(this.btnStartLogin_Click);
             // 
             // btnStartRegister
             // 
-            this.btnStartRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnStartRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartRegister.ForeColor = System.Drawing.Color.White;
             this.btnStartRegister.Location = new System.Drawing.Point(287, 432);
             this.btnStartRegister.Name = "btnStartRegister";
             this.btnStartRegister.Size = new System.Drawing.Size(270, 94);
             this.btnStartRegister.TabIndex = 2;
             this.btnStartRegister.Text = "Register";
-            this.btnStartRegister.UseVisualStyleBackColor = true;
+            this.btnStartRegister.UseVisualStyleBackColor = false;
             this.btnStartRegister.Click += new System.EventHandler(this.btnStartRegister_Click);
             // 
             // tcQuiz
@@ -124,7 +129,7 @@
             this.tcQuiz.Controls.Add(this.tpQuiz);
             this.tcQuiz.Controls.Add(this.tpLeaderboard);
             this.tcQuiz.Controls.Add(this.tabPage1);
-            this.tcQuiz.Location = new System.Drawing.Point(12, 12);
+            this.tcQuiz.Location = new System.Drawing.Point(24, 15);
             this.tcQuiz.Name = "tcQuiz";
             this.tcQuiz.SelectedIndex = 0;
             this.tcQuiz.Size = new System.Drawing.Size(858, 668);
@@ -178,9 +183,9 @@
             // 
             // tbnBack1
             // 
-            this.tbnBack1.BackColor = System.Drawing.Color.White;
+            this.tbnBack1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.tbnBack1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbnBack1.ForeColor = System.Drawing.Color.Black;
+            this.tbnBack1.ForeColor = System.Drawing.Color.White;
             this.tbnBack1.Location = new System.Drawing.Point(297, 489);
             this.tbnBack1.Name = "tbnBack1";
             this.tbnBack1.Size = new System.Drawing.Size(238, 72);
@@ -202,7 +207,7 @@
             // 
             // txbLoginPassword
             // 
-            this.txbLoginPassword.BackColor = System.Drawing.Color.Gray;
+            this.txbLoginPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.txbLoginPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbLoginPassword.ForeColor = System.Drawing.Color.White;
             this.txbLoginPassword.Location = new System.Drawing.Point(214, 308);
@@ -224,7 +229,7 @@
             // 
             // txbLoginUsername
             // 
-            this.txbLoginUsername.BackColor = System.Drawing.Color.Gray;
+            this.txbLoginUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.txbLoginUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbLoginUsername.ForeColor = System.Drawing.Color.White;
             this.txbLoginUsername.Location = new System.Drawing.Point(214, 202);
@@ -245,9 +250,9 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.White;
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.Black;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(297, 411);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(238, 72);
@@ -276,9 +281,9 @@
             // 
             // btnBack2
             // 
-            this.btnBack2.BackColor = System.Drawing.Color.White;
+            this.btnBack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btnBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack2.ForeColor = System.Drawing.Color.Black;
+            this.btnBack2.ForeColor = System.Drawing.Color.White;
             this.btnBack2.Location = new System.Drawing.Point(297, 489);
             this.btnBack2.Name = "btnBack2";
             this.btnBack2.Size = new System.Drawing.Size(238, 72);
@@ -300,7 +305,7 @@
             // 
             // txbRegisterPassword
             // 
-            this.txbRegisterPassword.BackColor = System.Drawing.Color.Gray;
+            this.txbRegisterPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.txbRegisterPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbRegisterPassword.ForeColor = System.Drawing.Color.White;
             this.txbRegisterPassword.Location = new System.Drawing.Point(214, 308);
@@ -322,7 +327,7 @@
             // 
             // txbRegisterUsername
             // 
-            this.txbRegisterUsername.BackColor = System.Drawing.Color.Gray;
+            this.txbRegisterUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.txbRegisterUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbRegisterUsername.ForeColor = System.Drawing.Color.White;
             this.txbRegisterUsername.Location = new System.Drawing.Point(214, 202);
@@ -343,9 +348,9 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.White;
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.Black;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
             this.btnRegister.Location = new System.Drawing.Point(297, 411);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(238, 72);
@@ -406,14 +411,14 @@
             // btn1
             // 
             this.btn1.AllowDrop = true;
-            this.btn1.BackColor = System.Drawing.Color.Silver;
+            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btn1.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
             this.btn1.FlatAppearance.BorderSize = 10;
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn1.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.ForeColor = System.Drawing.Color.Black;
+            this.btn1.ForeColor = System.Drawing.Color.White;
             this.btn1.Location = new System.Drawing.Point(63, 323);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(360, 100);
@@ -427,14 +432,14 @@
             // btn3
             // 
             this.btn3.AllowDrop = true;
-            this.btn3.BackColor = System.Drawing.Color.Silver;
+            this.btn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn3.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btn3.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
             this.btn3.FlatAppearance.BorderSize = 10;
             this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn3.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3.ForeColor = System.Drawing.Color.Black;
+            this.btn3.ForeColor = System.Drawing.Color.White;
             this.btn3.Location = new System.Drawing.Point(63, 429);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(360, 100);
@@ -448,14 +453,14 @@
             // btn4
             // 
             this.btn4.AllowDrop = true;
-            this.btn4.BackColor = System.Drawing.Color.Silver;
+            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn4.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btn4.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
             this.btn4.FlatAppearance.BorderSize = 10;
             this.btn4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn4.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4.ForeColor = System.Drawing.Color.Black;
+            this.btn4.ForeColor = System.Drawing.Color.White;
             this.btn4.Location = new System.Drawing.Point(429, 429);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(360, 100);
@@ -469,14 +474,14 @@
             // btn2
             // 
             this.btn2.AllowDrop = true;
-            this.btn2.BackColor = System.Drawing.Color.Silver;
+            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.btn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn2.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btn2.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
             this.btn2.FlatAppearance.BorderSize = 10;
             this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn2.Font = new System.Drawing.Font("Gadugi", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn2.ForeColor = System.Drawing.Color.Black;
+            this.btn2.ForeColor = System.Drawing.Color.White;
             this.btn2.Location = new System.Drawing.Point(429, 323);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(360, 100);
@@ -525,6 +530,7 @@
             // tpLeaderboard
             // 
             this.tpLeaderboard.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
+            this.tpLeaderboard.Controls.Add(this.lblHighscore);
             this.tpLeaderboard.Controls.Add(this.label12);
             this.tpLeaderboard.Controls.Add(this.btnBack3);
             this.tpLeaderboard.Controls.Add(this.rtbLeaderboard);
@@ -537,14 +543,37 @@
             this.tpLeaderboard.Text = "Leaderboard";
             this.tpLeaderboard.UseVisualStyleBackColor = true;
             // 
+            // lblHighscore
+            // 
+            this.lblHighscore.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighscore.ForeColor = System.Drawing.Color.White;
+            this.lblHighscore.Location = new System.Drawing.Point(244, 170);
+            this.lblHighscore.Name = "lblHighscore";
+            this.lblHighscore.Size = new System.Drawing.Size(387, 48);
+            this.lblHighscore.TabIndex = 22;
+            this.lblHighscore.Text = "9999";
+            this.lblHighscore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(267, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(324, 48);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Your high score:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnBack3
             // 
-            this.btnBack3.BackColor = System.Drawing.Color.White;
-            this.btnBack3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack3.ForeColor = System.Drawing.Color.Black;
-            this.btnBack3.Location = new System.Drawing.Point(309, 516);
+            this.btnBack3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnBack3.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack3.ForeColor = System.Drawing.Color.White;
+            this.btnBack3.Location = new System.Drawing.Point(334, 555);
             this.btnBack3.Name = "btnBack3";
-            this.btnBack3.Size = new System.Drawing.Size(238, 72);
+            this.btnBack3.Size = new System.Drawing.Size(199, 72);
             this.btnBack3.TabIndex = 20;
             this.btnBack3.Text = "Back";
             this.btnBack3.UseVisualStyleBackColor = false;
@@ -552,20 +581,23 @@
             // 
             // rtbLeaderboard
             // 
-            this.rtbLeaderboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rtbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbLeaderboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.rtbLeaderboard.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rtbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbLeaderboard.ForeColor = System.Drawing.Color.White;
-            this.rtbLeaderboard.Location = new System.Drawing.Point(210, 214);
+            this.rtbLeaderboard.Location = new System.Drawing.Point(156, 231);
             this.rtbLeaderboard.Name = "rtbLeaderboard";
-            this.rtbLeaderboard.Size = new System.Drawing.Size(428, 285);
+            this.rtbLeaderboard.ReadOnly = true;
+            this.rtbLeaderboard.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.rtbLeaderboard.Size = new System.Drawing.Size(538, 304);
             this.rtbLeaderboard.TabIndex = 13;
-            this.rtbLeaderboard.Text = resources.GetString("rtbLeaderboard.Text");
+            this.rtbLeaderboard.Text = "#1 test:     ---     1507\n#2 test:     ---     842\n#3 test:     ---     299\n";
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Gadugi", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(60, 15);
+            this.label6.Location = new System.Drawing.Point(61, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(726, 134);
             this.label6.TabIndex = 12;
@@ -590,9 +622,9 @@
             // 
             // btnLeaderboard
             // 
-            this.btnLeaderboard.BackColor = System.Drawing.Color.White;
-            this.btnLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeaderboard.ForeColor = System.Drawing.Color.Black;
+            this.btnLeaderboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnLeaderboard.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeaderboard.ForeColor = System.Drawing.Color.White;
             this.btnLeaderboard.Location = new System.Drawing.Point(306, 476);
             this.btnLeaderboard.Name = "btnLeaderboard";
             this.btnLeaderboard.Size = new System.Drawing.Size(238, 72);
@@ -603,9 +635,9 @@
             // 
             // btnPlayAgain
             // 
-            this.btnPlayAgain.BackColor = System.Drawing.Color.White;
-            this.btnPlayAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlayAgain.ForeColor = System.Drawing.Color.Black;
+            this.btnPlayAgain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.btnPlayAgain.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlayAgain.ForeColor = System.Drawing.Color.White;
             this.btnPlayAgain.Location = new System.Drawing.Point(306, 398);
             this.btnPlayAgain.Name = "btnPlayAgain";
             this.btnPlayAgain.Size = new System.Drawing.Size(238, 72);
@@ -647,23 +679,12 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Game Over!";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Gadugi", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(215, 139);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(358, 52);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Your high score:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 683);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(908, 707);
             this.Controls.Add(this.tcQuiz);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -732,6 +753,7 @@
         private System.Windows.Forms.Button btnPlayAgain;
         private System.Windows.Forms.Label lblYourScore;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblHighscore;
     }
 }
 
