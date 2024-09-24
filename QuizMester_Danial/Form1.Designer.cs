@@ -52,6 +52,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.tpQuiz = new System.Windows.Forms.TabPage();
+            this.lblTimesUpTotal = new System.Windows.Forms.Label();
+            this.lblTimesUpQuestion = new System.Windows.Forms.Label();
             this.pgbTimeLeftTotal = new System.Windows.Forms.ProgressBar();
             this.lblQuestionNumber = new System.Windows.Forms.Label();
             this.pgbTimeLeftQuestion = new System.Windows.Forms.ProgressBar();
@@ -363,6 +365,8 @@
             // 
             this.tpQuiz.BackgroundImage = global::QuizMester_Danial.Properties.Resources.darkmode;
             this.tpQuiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpQuiz.Controls.Add(this.lblTimesUpTotal);
+            this.tpQuiz.Controls.Add(this.lblTimesUpQuestion);
             this.tpQuiz.Controls.Add(this.pgbTimeLeftTotal);
             this.tpQuiz.Controls.Add(this.lblQuestionNumber);
             this.tpQuiz.Controls.Add(this.pgbTimeLeftQuestion);
@@ -381,9 +385,31 @@
             this.tpQuiz.Text = "Quiz";
             this.tpQuiz.UseVisualStyleBackColor = true;
             // 
+            // lblTimesUpTotal
+            // 
+            this.lblTimesUpTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimesUpTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lblTimesUpTotal.Location = new System.Drawing.Point(301, 590);
+            this.lblTimesUpTotal.Name = "lblTimesUpTotal";
+            this.lblTimesUpTotal.Size = new System.Drawing.Size(248, 23);
+            this.lblTimesUpTotal.TabIndex = 21;
+            this.lblTimesUpTotal.Text = "Times almost up!";
+            this.lblTimesUpTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTimesUpQuestion
+            // 
+            this.lblTimesUpQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimesUpQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.lblTimesUpQuestion.Location = new System.Drawing.Point(301, 540);
+            this.lblTimesUpQuestion.Name = "lblTimesUpQuestion";
+            this.lblTimesUpQuestion.Size = new System.Drawing.Size(248, 23);
+            this.lblTimesUpQuestion.TabIndex = 20;
+            this.lblTimesUpQuestion.Text = "Times almost up!";
+            this.lblTimesUpQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pgbTimeLeftTotal
             // 
-            this.pgbTimeLeftTotal.Location = new System.Drawing.Point(62, 593);
+            this.pgbTimeLeftTotal.Location = new System.Drawing.Point(62, 615);
             this.pgbTimeLeftTotal.Name = "pgbTimeLeftTotal";
             this.pgbTimeLeftTotal.Size = new System.Drawing.Size(726, 23);
             this.pgbTimeLeftTotal.TabIndex = 19;
@@ -402,7 +428,7 @@
             // 
             // pgbTimeLeftQuestion
             // 
-            this.pgbTimeLeftQuestion.Location = new System.Drawing.Point(63, 552);
+            this.pgbTimeLeftQuestion.Location = new System.Drawing.Point(63, 565);
             this.pgbTimeLeftQuestion.Name = "pgbTimeLeftQuestion";
             this.pgbTimeLeftQuestion.Size = new System.Drawing.Size(726, 23);
             this.pgbTimeLeftQuestion.TabIndex = 17;
@@ -754,6 +780,8 @@
         private System.Windows.Forms.Label lblYourScore;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblHighscore;
+        private System.Windows.Forms.Label lblTimesUpTotal;
+        private System.Windows.Forms.Label lblTimesUpQuestion;
     }
 }
 

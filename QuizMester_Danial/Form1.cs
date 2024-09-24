@@ -71,20 +71,19 @@ namespace QuizMester_Danial
 
                 pgbTimeLeftQuestion.Value = (int)((timeLeftQuestion / 10) * 100); // Update ProgressBar
 
-                if(pgbTimeLeftQuestion.Value < 40)
+                if(pgbTimeLeftQuestion.Value < 30)
                 {
-                    pgbTimeLeftQuestion.ForeColor = Color.Red;
+                    lblTimesUpQuestion.ForeColor = Color.Firebrick;
                 }
                 else
                 {
-                    pgbTimeLeftQuestion.ForeColor = Color.Green;
+                    lblTimesUpQuestion.ForeColor = Color.FromArgb(28,28,28);
                 }
 
                 if (timeLeftQuestion <= 0)
                 {
                     // Time's up, show next question
                     timerQuiz.Stop();
-                    MessageBox.Show("Time's up for this quesrtion!");
                     timesUp.Play();
                     ShowNextQuestion();
                 }
@@ -96,6 +95,14 @@ namespace QuizMester_Danial
 
                 pgbTimeLeftTotal.Value = (int)((timeLeftTotal / 60) * 100); // Update ProgressBar
 
+                if (pgbTimeLeftTotal.Value < 30)
+                {
+                    lblTimesUpTotal.ForeColor = Color.Firebrick;
+                }
+                else
+                {
+                    lblTimesUpTotal.ForeColor = Color.FromArgb(28, 28, 28);
+                }
                 if (timeLeftTotal <= 0)
                 {
                     // Time's up, show next question
@@ -642,7 +649,9 @@ namespace QuizMester_Danial
             lblQuestion.Text = "QuizMester!"; // Clear the question label
             pgbTimeLeftQuestion.Value = 100; // Reset question progress bar
             pgbTimeLeftTotal.Value = 100; // Reset total progress bar
-            lblYourScore.Text = ""; // Clear the score label
+
+            lblTimesUpQuestion.ForeColor = Color.FromArgb(28, 28, 28);
+            lblTimesUpTotal.ForeColor = Color.FromArgb(28, 28, 28);
 
             started = false;
             choose = false;
@@ -769,6 +778,5 @@ namespace QuizMester_Danial
                 MessageBox.Show($"An error occurred while loading Personal Highscore: {ex.Message}");
             }
         }
-
     }
 }
